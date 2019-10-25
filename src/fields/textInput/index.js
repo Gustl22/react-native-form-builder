@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { View, Item, Input, Icon, ListItem, Text } from 'native-base';
 import { Platform } from 'react-native';
 import { getKeyboardType } from '../../utils/methods';
+import styles from "../../../../../src/themes/Styles";
+import Theme from "../../../../../src/themes/DarkBlueTheme";
 
 export default class TextInputField extends Component {
   static propTypes = {
@@ -22,8 +24,10 @@ export default class TextInputField extends Component {
     return (
       <ListItem style={{ borderBottomWidth: 0, paddingVertical: 5 }}>
         <View style={{ flex: 1 }}>
-          <View>
-            <Item error={theme.changeTextInputColorOnError ? attributes.error : null}>
+          <Text style={{color: theme.labelActiveColor}}>{attributes.label}</Text>
+          <View style={theme.inputContainerStyle}>
+            <Item error={theme.changeTextInputColorOnError ? attributes.error : null}
+            style={theme.inputStyle}>
               { attributes.icon &&
               <Icon style={{color:theme.textInputIconColor}} name={attributes.icon} />
                 }
@@ -32,6 +36,7 @@ export default class TextInputField extends Component {
                   height: inputProps && inputProps.multiline && (Platform.OS === 'ios' ? undefined : null),
                   padding: 0,
                 }}
+                // inputContainerStyle={theme.inputContainerStyle}
                 ref={(c) => { this.textInput = c; }}
                 underlineColorAndroid="transparent"
                 numberOfLines={3}

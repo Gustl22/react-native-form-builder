@@ -38,7 +38,7 @@ export default class FormField extends Component {
     return (
       <View>
         <View style={{ paddingHorizontal: 15, paddingVertical: 5 }}>
-          <Text style={{ fontWeight: '500', fontSize: 17 }}>{attributes.label}</Text>
+          <Text style={{ fontWeight: '500', fontSize: 17, color: theme.labelActiveColor}}>{attributes.label}</Text>
         </View>
         <View style={{ paddingHorizontal: 10 }}>
           <GenerateForm
