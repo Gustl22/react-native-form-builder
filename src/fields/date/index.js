@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { View, Text } from 'native-base';
-import I18n from 'react-native-i18n';
+import moment from 'moment';
 import { Platform, DatePickerIOS, DatePickerAndroid, TouchableOpacity, TimePickerAndroid } from 'react-native';
 import Panel from '../../components/panel';
 
@@ -113,7 +113,7 @@ export default class DatePickerField extends Component {
                   }}
                 >
                   <Text>
-                    { (value && I18n.strftime(value, '%d %b %Y')) || 'None' }
+                    { (value && moment(value).format('ll')) || 'None' }
                   </Text>
                 </View>
             }
@@ -128,7 +128,7 @@ export default class DatePickerField extends Component {
                   }}
                 >
                   <Text>
-                    { (value && I18n.strftime(value, '%I:%M %p')) || 'None' }
+                    { (value && moment(value).format('LT')) || 'None' }
                   </Text>
                 </View>
             }
@@ -180,7 +180,7 @@ export default class DatePickerField extends Component {
                   }}
                 >
                   <Text onPress={this.showDatePicker}>
-                    { (value && I18n.strftime(value, '%d %b %Y')) || 'Date' }
+                    { (value && moment(value).format('ll')) || 'Date' }
                   </Text>
                 </TouchableOpacity>
             }
@@ -194,7 +194,7 @@ export default class DatePickerField extends Component {
                 }}
               >
                 <Text onPress={this.showTimePicker}>
-                  { (value && I18n.strftime(value, '%I:%M %p')) || 'Time' }
+                  { (value && moment(value).format('LT')) || 'Time' }
                 </Text>
                 </TouchableOpacity>
             }
