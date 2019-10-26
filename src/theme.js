@@ -15,4 +15,15 @@ export default {
   errorMsgColor: '#ed2f2f',
   changeTextInputColorOnError: true,
   textInputErrorIcon: 'close-circle',
+  inputStyle: {
+    borderBottomWidth: 0,
+    flex: 1,
+    justifyContent: 'center',
+  },
+  inputContainerStyle: {
+    borderBottomWidth: 1,
+    height: 45,
+    marginVertical: 10,
+    paddingLeft: 15,
+  }
 };

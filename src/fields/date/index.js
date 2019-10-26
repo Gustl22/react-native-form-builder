@@ -102,9 +102,7 @@ export default class DatePickerField extends Component {
                     }}
                 >
                   <View
-                      style={{
-                        flexDirection: 'row',
-                      }}
+                      style={{flexDirection: 'row',}}
                   >
                     {
                       (mode ?
@@ -157,24 +155,22 @@ export default class DatePickerField extends Component {
               :
               <View>
                 {
-                  (attributes.mode === 'date'
-                      || attributes.mode === 'datetime')
+                  (attributes.mode === 'date' || attributes.mode === 'datetime')
                   &&
                   <TouchableOpacity
                       style={theme.inputContainerStyle}
                       onPress={this.showDatePicker}
                   >
                     <View style={theme.inputStyle}>
-                      <Text style={value ? {color: theme.pickerColorSelected} : {color: theme.inputColorPlaceholder}}>
-                        {(value && moment(value).format('ll')) || 'Date'}
-                      </Text>
+                      <Text style={value ? {color: theme.pickerColorSelected} : {color: theme.inputColorPlaceholder}}>{
+                        (value && moment(value).format('ll')) || 'Date'
+                      }</Text>
                     </View>
                     <ErrorComponent {...{attributes, theme}} />
                   </TouchableOpacity>
                 }
                 {
-                  (attributes.mode === 'time'
-                      || attributes.mode === 'datetime')
+                  (attributes.mode === 'time' || attributes.mode === 'datetime')
                   &&
                   <TouchableOpacity
                       style={theme.inputContainerStyle}

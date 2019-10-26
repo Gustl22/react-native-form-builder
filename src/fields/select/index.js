@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Dimensions, Modal} from 'react-native';
+import {Dimensions, Modal, TouchableOpacity} from 'react-native';
 import {
   Body,
   Button,
@@ -65,11 +65,18 @@ export default class SelectField extends Component {
         attributes.objectType ?
             (attributes.value && attributes.value[attributes.labelKey]) || 'None'
             : attributes.value || 'None';
+    if(attributes.inline)
+      return this.renderInline(theme, attributes, ErrorComponent, selectedText);
+    else
+      return this.renderOverlay(theme, attributes, ErrorComponent, selectedText);
+  }
+
+  renderOverlay(theme, attributes, ErrorComponent, selectedText){
     return (
         <View>
           <Text style={{color: theme.labelActiveColor}}>{attributes.label}</Text>
           <ListItem icon onPress={() => this.toggleModalVisible()}
-                    style={theme.inputContainerStyle}>
+                    style={{...theme.inputContainerStyle, marginLeft: 0}}>
             <View style={{width: deviceWidth / 2, alignItems: 'flex-start'}}>
               <Text numberOfLines={1} ellipSizeMode="tail"
                     style={{color: theme.pickerColorSelected}}>{selectedText}</Text>
@@ -133,6 +140,51 @@ export default class SelectField extends Component {
               </Content>
             </Container>
           </Modal>
+        </View>
+    );
+  }
+
+  renderInline(theme, attributes, ErrorComponent, selectedText){
+    return (
+        <View>
+          <Text style={{color: theme.labelActiveColor}}>{attributes.label}</Text>
+          {/*<View style={{width: deviceWidth / 2, alignItems: 'flex-start'}}>*/}
+          {/*  <Text numberOfLines={1} ellipSizeMode="tail"*/}
+          {/*        style={{color: theme.pickerColorSelected}}>{selectedText}</Text>*/}
+          {/*</View>*/}
+          <View style={{...theme.inputContainerStyle, paddingLeft: 0, paddingRight: 0}}>
+            <View style={{flex: 1, flexDirection: 'row', alignItems: 'stretch',}}>
+              {
+                attributes.options.map((item, index) => {
+                  let isSelected = false;
+                  if (attributes.multiple) {
+                    isSelected = attributes.objectType ?
+                        attributes.value.findIndex(option =>
+                            option[attributes.primaryKey] === item[attributes.primaryKey]
+                        ) !== -1 : (attributes.value.indexOf(item) !== -1);
+                  } else {
+                    isSelected = this.props.attributes.value[attributes.primaryKey] === item[attributes.primaryKey];
+                  }
+                  return (
+                      <TouchableOpacity
+                          key={index}
+                          onPress={() => this.toggleSelect(item)}
+                          style={{flex: 1, justifyContent: 'center',
+                            borderColor: theme.inputBorderColor,
+                            borderRightWidth: theme.borderWidth,
+                            backgroundColor: (isSelected ? theme.inputActiveBgColor : 'transparent')}}
+                      >
+                        <Text style={{alignSelf: 'center', paddingHorizontal: 10, color: (isSelected ? theme.inputActiveColor : theme.inputColor)}}>
+                          {attributes.objectType ? item[attributes.labelKey] : item}
+                        </Text>
+                      </TouchableOpacity>);
+                })
+              }
+            </View>
+          </View>
+          <View style={{paddingHorizontal: 15}}>
+            <ErrorComponent {...{attributes, theme}} />
+          </View>
         </View>
     );
   }

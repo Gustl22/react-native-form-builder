@@ -22,8 +22,7 @@ export default class TextInputField extends Component {
     const inputProps = attributes.props;
     const keyboardType = getKeyboardType(attributes.type);
     return (
-      <ListItem style={{ borderBottomWidth: 0, paddingVertical: 5 }}>
-        <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
           <Text style={{color: theme.labelActiveColor}}>{attributes.label}</Text>
           <View style={theme.inputContainerStyle}>
             <Item error={theme.changeTextInputColorOnError ? attributes.error : null}
@@ -35,8 +34,8 @@ export default class TextInputField extends Component {
                 style={{
                   height: inputProps && inputProps.multiline && (Platform.OS === 'ios' ? undefined : null),
                   padding: 0,
+                  color: theme.inputColor,
                 }}
-                // inputContainerStyle={theme.inputContainerStyle}
                 ref={(c) => { this.textInput = c; }}
                 underlineColorAndroid="transparent"
                 numberOfLines={3}
@@ -57,7 +56,6 @@ export default class TextInputField extends Component {
           </View>
           <ErrorComponent {...{ attributes, theme }} />
         </View>
-      </ListItem>
     );
   }
 }

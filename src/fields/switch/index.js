@@ -15,12 +15,10 @@ export default class SwitchField extends Component {
   render() {
     const { attributes, theme, ErrorComponent } = this.props;
     return (
-      <View>
+      <View style={theme.inputContainerStyle}>
         <View
           style={{
             backgroundColor: theme.pickerBgColor,
-            borderBottomColor: theme.inputBorderColor,
-            borderBottomWidth: theme.borderWidth,
             marginHorizontal: 10,
             marginVertical: 0,
             paddingVertical: 10,

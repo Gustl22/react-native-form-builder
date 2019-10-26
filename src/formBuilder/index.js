@@ -365,7 +365,9 @@ export default class FormBuilder extends Component {
   }
   render() {
     return (
-        <View>
+        <View style={{flex: 1,
+          justifyContent: 'center',
+          alignItems: 'stretch',}}>
           {this.generateFields() || <View />}
         </View>
     );

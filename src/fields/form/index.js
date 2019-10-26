@@ -37,7 +37,7 @@ export default class FormField extends Component {
     } = this.props;
     return (
       <View>
-        <View style={{ paddingHorizontal: 15, paddingVertical: 5 }}>
+        <View style={{ paddingVertical: 5 }}>
           <Text style={{ fontWeight: '500', fontSize: 17, color: theme.labelActiveColor}}>{attributes.label}</Text>
         </View>
         <View style={{ paddingHorizontal: 10 }}>

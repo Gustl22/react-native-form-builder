@@ -54,6 +54,7 @@ export default {
       required: true, // default false
       label: 'Select', // required
       labelKey: 'name', // tells the display key (required)
+      inline: true, // renders inline instead of an external page
       primaryKey: 'id', // tells the unique key (required)
       objectType: true, // tells the type of values is object default false
       options: [ // required
