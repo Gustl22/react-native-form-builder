@@ -163,7 +163,12 @@ export default class SelectField extends Component {
                             option[attributes.primaryKey] === item[attributes.primaryKey]
                         ) !== -1 : (attributes.value.indexOf(item) !== -1);
                   } else {
-                    isSelected = this.props.attributes.value[attributes.primaryKey] === item[attributes.primaryKey];
+                    let currentValue = this.props.attributes.value;
+                    if(attributes.primaryKey) {
+                      isSelected = this.props.attributes.value[attributes.primaryKey] === item[attributes.primaryKey];
+                    } else {
+                      isSelected = (Array.isArray(currentValue) ? currentValue[0]: this.props.attributes.value) === item;
+                    }
                   }
                   return (
                       <TouchableOpacity
