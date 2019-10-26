@@ -26,11 +26,11 @@ export default {
     alignSelf: 'stretch',
     borderRadius: 40,
     borderWidth: 1,
-    borderColor: Theme.foregroundColor,
+    borderColor: '#D9D5DC',
     height: 45,
     marginVertical: 10,
     paddingLeft: 15,
     overflow: 'hidden',
-    backgroundColor: Theme.inputBackgroundColor,
+    backgroundColor: '#5cb85c',
   },
 };
