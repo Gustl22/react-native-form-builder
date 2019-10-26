@@ -10,6 +10,8 @@ export default {
   borderWidth: 1,
   inputColorPlaceholder: '#ADADAD',
   inputColor: '#575757',
+  inputActiveBgColor: '#5a5',
+  inputActiveColor: '#333',
   inputFontSize: 15,
   labelActiveColor: '#575757',
   errorMsgColor: '#ed2f2f',
@@ -17,13 +19,18 @@ export default {
   textInputErrorIcon: 'close-circle',
   inputStyle: {
     borderBottomWidth: 0,
-    flex: 1,
-    justifyContent: 'center',
+    alignSelf: 'flex-start',
   },
   inputContainerStyle: {
-    borderBottomWidth: 1,
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: Theme.foregroundColor,
     height: 45,
     marginVertical: 10,
     paddingLeft: 15,
-  }
+    overflow: 'hidden',
+    backgroundColor: Theme.inputBackgroundColor,
+  },
 };
