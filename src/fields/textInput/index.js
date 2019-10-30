@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { View, Item, Input, Icon, ListItem, Text } from 'native-base';
 import { Platform } from 'react-native';
 import { getKeyboardType } from '../../utils/methods';
-import styles from "../../../../../src/themes/Styles";
-import Theme from "../../../../../src/themes/DarkBlueTheme";
 
 export default class TextInputField extends Component {
   static propTypes = {
